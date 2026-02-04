@@ -7,10 +7,7 @@ from unet_model import UNet
 from huggingface_hub import hf_hub_download
 
 
-weights_path = hf_hub_download(
-    repo_id="kinsu2/unet-for-crack-concrete",
-    filename="unet_model.pth",
-)
+weights_path =  "unet_model.pth" 
 
 # Initialize the model
 model = UNet()
