@@ -9,7 +9,7 @@ from huggingface_hub import hf_hub_download
 
 weights_path = hf_hub_download(
     repo_id="kinsu2/unet-for-crack-concrete",
-    filename="unet_weights_v2.pth"    
+    filename="unet_model.pth"    
 )
 
 # Initialize the model
