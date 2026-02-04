@@ -1,2 +1,8 @@
+
 torch
-gradio
+torchvision
+Pillow
+matplotlib
+numpy
+huggingface_hub
+datasets
