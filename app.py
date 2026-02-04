@@ -37,7 +37,7 @@ demo=gr.Interface(
     fn=predict,
     inputs=gr.Image(type='pil'),
     outputs=gr.Image(type='pil'),
-    title="UNet Crack Segementation",
+    title="UNet Crack Segmentation",
     description="upload a concrete surface image to get predicte crack mask"
     
 )
