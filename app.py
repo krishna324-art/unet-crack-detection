@@ -3,21 +3,19 @@ import torch
 from torchvision import transforms 
 from PIL import Image
 import numpy as np
-from unet_model import UNet
-from huggingface_hub import hf_hub_download
+from unet_model import UNet 
 
 
-weights_path =  "unet_model.pth" 
 
-# Initialize the model
+weights_path = "unet_model.pth" 
+
+# Initialize the model and load weights safely
 model = UNet()
 model.load_state_dict(torch.load(weights_path, map_location="cpu", weights_only=True))
-model.eval()
+model.eval() # Set model to evaluation mode
 
-# Preprocessing
+# Preprocessing pipeline
 IMG_HEIGHT, IMG_WIDTH = 128, 128
-# FIX 3: Changed 'transform.Compose' to 'transforms.Compose'
-# FIX 4: Changed 'transform.resize' to 'transforms.Resize'
 transform = transforms.Compose([
     transforms.Resize((IMG_HEIGHT, IMG_WIDTH)),
     transforms.ToTensor()
@@ -29,15 +27,16 @@ def predict(image):
     
     with torch.no_grad():
         pred = model(img)
-
-     pred = torch.sigmoid(pred) 
+        # Apply sigmoid activation function to model output within the no_grad context
+        pred = torch.sigmoid(pred) 
         
     
+    # Process the output tensor into a numpy mask
     mask = pred.squeeze().cpu().numpy()
     mask = (mask * 255).astype(np.uint8)
     
-    
-    mask_img = Image.fromarray(mask).resize((orig_w, orig_h), Image.NEAREST)
+    # Resize mask back to original dimensions using 'L' mode for grayscale
+    mask_img = Image.fromarray(mask, mode='L').resize((orig_w, orig_h), Image.NEAREST)
     return mask_img
 
 # Gradio interface
