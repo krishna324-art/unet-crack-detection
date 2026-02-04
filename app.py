@@ -29,6 +29,8 @@ def predict(image):
     
     with torch.no_grad():
         pred = model(img)
+
+     pred = torch.sigmoid(pred) 
         
     
     mask = pred.squeeze().cpu().numpy()
