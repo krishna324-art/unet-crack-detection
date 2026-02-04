@@ -8,8 +8,9 @@ from huggingface_hub import hf_hub_download
 
 
 weights_path = hf_hub_download(
-    repo_id="https://huggingface.co/datasets/kinsu2/concrete-crack",
-    filename="unet_model.pth"    
+    repo_id="/kinsu2/concrete-crack",
+    filename="unet_model.pth",
+    repo_type="dataset",
 )
 
 # Initialize the model
