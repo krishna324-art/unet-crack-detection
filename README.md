@@ -11,8 +11,8 @@ license: apache-2.0
 short_description: upload a concrete image for segmentation
 ---
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
-Here’s a clean and professional **README.md** for your project:
+Check out the configuration reference at https://huggingface.co/spaces/kinsu2/unet-for-crack-concrete
+
 
 ---
 
